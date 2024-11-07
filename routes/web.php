@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetController;
@@ -61,12 +62,21 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('static-sign-up');
 	})->name('sign-up');
 
+
+    Route::get('get/hrm/users',[UserController::class,'Manageallusers'])->name('manage.all.users');
+	Route::get('create/hrm/users',[UserController::class,'showcreateuserpage'])->name('show.create.users');
+	Route::post('save/hrm/users',[UserController::class,'createusers'])->name('save.users.hrm');
     Route::get('/logout', [SessionsController::class, 'destroy']);
 	Route::get('/user-profile', [InfoUserController::class, 'create']);
 	Route::post('/user-profile', [InfoUserController::class, 'store']);
+
+
     Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');
+
+
+
 });
 
 
