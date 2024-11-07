@@ -10,6 +10,12 @@ class RoleController extends Controller
 {
     public function index()
     {
+        return view('RoleManagment.index');
+    }
+
+
+    public function createrolepage()
+    {
         return view();
     }
 }

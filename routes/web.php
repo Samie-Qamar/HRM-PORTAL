@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -66,6 +67,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('get/hrm/users',[UserController::class,'Manageallusers'])->name('manage.all.users');
 	Route::get('create/hrm/users',[UserController::class,'showcreateuserpage'])->name('show.create.users');
 	Route::post('save/hrm/users',[UserController::class,'createusers'])->name('save.users.hrm');
+
+
+   // Roles Management Route //
+   Route::get('get/hrm/roles',[RoleController::class,'index'])->name('manage.all.roles');
+
+
     Route::get('/logout', [SessionsController::class, 'destroy']);
 	Route::get('/user-profile', [InfoUserController::class, 'create']);
 	Route::post('/user-profile', [InfoUserController::class, 'store']);
