@@ -7,6 +7,7 @@ use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -64,14 +65,22 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('sign-up');
 
 
-    Route::get('get/hrm/users',[UserController::class,'Manageallusers'])->name('manage.all.users');
-	Route::get('create/hrm/users',[UserController::class,'showcreateuserpage'])->name('show.create.users');
-	Route::post('save/hrm/users',[UserController::class,'createusers'])->name('save.users.hrm');
+    Route::get('manage/hrm-users',[UserController::class,'Manageallusers'])->name('manage.all.users');
+	Route::get('create/hrm-users',[UserController::class,'showcreateuserpage'])->name('show.create.users');
+	Route::post('save/hrm-users',[UserController::class,'createusers'])->name('save.users.hrm');
 
 
    // Roles Management Route //
-   Route::get('get/hrm/roles',[RoleController::class,'index'])->name('manage.all.roles');
+	 Route::get('manage/hrm-roles',[RoleController::class,'index'])->name('manage.all.roles');
+     Route::get('cretae/hrm-roles',[RoleController::class,'createrolepage'])->name('show.create.roles');
+	 Route::post('save/hrm-roles',[RoleController::class,'storeroles'])->name('save.hrm.roles');
 
+
+
+
+	 // Permission Managment //
+	 Route::get('manage/hrm-permission',[PermissionController::class,'index'])->name('manage.all.permission');
+     Route::get('create/hrm-permission',[PermissionController::class,'showcreatepage'])->name('show.create.permission');
 
     Route::get('/logout', [SessionsController::class, 'destroy']);
 	Route::get('/user-profile', [InfoUserController::class, 'create']);
