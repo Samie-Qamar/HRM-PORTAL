@@ -103,7 +103,7 @@
                 <h6 class="mb-0">Create Roles</h6>
             </div>
             <div class="card-body pt-4 p-3">
-                <form action="{{route('save.hrm.roles')}}" method="POST" role="form text-left">
+                <form action="{{route('store.premission')}}" method="POST" role="form text-left">
                     @csrf
                     @if($errors->any())
                         <div class="mt-3  alert alert-primary alert-dismissible fade show" role="alert">
@@ -126,7 +126,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="user-name" class="form-control-label">Role Name</label>
+                                <label for="user-name" class="form-control-label">Permission Name</label>
                                 <div class="@error('user.name')border border-danger rounded-3 @enderror">
                                     <input class="form-control" type="text" placeholder="Name"  name="name">
                                         
@@ -135,11 +135,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="user-email" class="form-control-label">Guard</label>
+                                <label for="user-email" class="form-control-label">Guard Name</label>
                                 <div class="@error('email')border border-danger rounded-3 @enderror">
-                                    <select class="form-control" type="text"  name="guard_name"> 
-                                    <option value="web">web</option>
-                                    </select>
+                                    <input type="text" class="form-control"   name="guard_name"/>
                                        
                                 </div>
                             </div>

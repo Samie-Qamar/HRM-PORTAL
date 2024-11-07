@@ -81,6 +81,7 @@ Route::group(['middleware' => 'auth'], function () {
 	 // Permission Managment //
 	 Route::get('manage/hrm-permission',[PermissionController::class,'index'])->name('manage.all.permission');
      Route::get('create/hrm-permission',[PermissionController::class,'showcreatepage'])->name('show.create.permission');
+	 Route::post('save/hrm-permission',[PermissionController::class,'storepremission'])->name('store.premission');
 
     Route::get('/logout', [SessionsController::class, 'destroy']);
 	Route::get('/user-profile', [InfoUserController::class, 'create']);
