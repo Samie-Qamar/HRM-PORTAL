@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Permission;
+use App\Models\RolePermission;
+use App\Models\Role;
 use Illuminate\Support\Facades\Validator;
 
 class PermissionController extends Controller
@@ -36,8 +38,17 @@ class PermissionController extends Controller
             'user_id'=>\Auth::user()->id,
 
         ];
-        Permission::create($data);
+        $role = Role::find(1);
+        $permission=Permission::create($data); 
+        $permission->roles()->attach($role->id);
+     //  dd($rrr);
+
+       
         return redirect()->back()->with('success','Permission Created Succesfully');
 
     }
+
+
+
+    
 }
