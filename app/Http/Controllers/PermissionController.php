@@ -15,16 +15,36 @@ class PermissionController extends Controller
 {
     public function index()
     {
-       // checkPermission('create-role');
+       $this->checkPermission('create-role');
       //  $permissions =Permission::get();
+      
+    //  dd(getUserPermissions());
         $permissions = Permission::get();
+        $roles=Role::get();
+        //dd($permission->roles());
+        return view ('PermissionManagement.index',compact('permissions','roles'));
+        // The user is authorized to create a role
+        // Proceed with logic
+    
+        
 
        // dd($permissions);
 
        // $permissions=Permission::get();
-        $roles=Role::get();
-        //dd($permission->roles());
-        return view ('PermissionManagement.index',compact('permissions','roles'));
+        
+    }
+
+
+
+   private  function checkPermission($value)
+    {
+      // dd($value);
+        if (auth()->user()->role_id != 0) {
+            //dd('dd');
+            if (!in_array($value, auth()->user()->())) {
+                return abort('403');
+            }
+        }
     }
 
 
