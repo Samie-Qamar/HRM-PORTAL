@@ -3,16 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Permission;
+//use App\Models\Permission;
+
 use App\Models\RolePermission;
 use App\Models\Role;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Gate;
 
 class PermissionController extends Controller
 {
     public function index()
     {
-        return view ('PermissionManagement.index');
+       // checkPermission('create-role');
+      //  $permissions =Permission::get();
+        $permissions = Permission::get();
+
+       // dd($permissions);
+
+       // $permissions=Permission::get();
+        $roles=Role::get();
+        //dd($permission->roles());
+        return view ('PermissionManagement.index',compact('permissions','roles'));
     }
 
 

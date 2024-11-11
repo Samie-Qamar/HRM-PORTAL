@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Permission extends Model
 {
+    public $guard_name = 'web';
     protected $fillable=[
         'name',
         'guard_name',
