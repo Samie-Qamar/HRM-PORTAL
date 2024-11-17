@@ -10,15 +10,20 @@ class UserController extends Controller
     public function showcreateuserpage()
     {
        
-          return view('UserManagment.createuser');
+            return view('UserManagment.createuser');
+       
+       
+         
     }
 
 
     public function Manageallusers()
     {
+       
         $users=User::get();
         //dd($users);
         return view('UserManagment.user-management',compact('users'));
+        
     }
 
 
